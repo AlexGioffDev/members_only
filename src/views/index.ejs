@@ -1,0 +1,39 @@
+<%- include("./partials/header.ejs") %>
+
+    <p>HomePage</p>
+    <div>
+        <h2>Posts</h2>
+        <% posts.forEach((post)=> { %>
+            <div>
+                <h3>
+                    <%= post.title %>
+                </h3>
+                <p>
+                    <%= post.body %>
+                </p>
+
+                <% if (currentUser && (currentUser.is_member || currentUser.admin)) {%>
+                    <div>
+                        <p>
+                            <%= post.username %>
+                        </p>
+                        <p>
+                            <%= post.created_at.toLocaleDateString("en-US", {year: 'numeric' , month: '2-digit' ,
+                                day: '2-digit' , hour: '2-digit' , minute: '2-digit' , hour12: false }) %>
+                        </p>
+                    </div>
+                <% } %>
+                
+                <% if (currentUser && currentUser.admin) { %>
+                    <form action="/post/delete/<%= post.post_id %>?_method=DELETE" method="POST" onclick="return confirm('Do you want really delete this post?')">
+                        <button type="submit"> 
+                            Delete
+                        </button>
+                    </form>
+                <% } %>
+
+            </div>
+            <% }) %>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>

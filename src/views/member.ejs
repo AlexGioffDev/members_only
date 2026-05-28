@@ -1,0 +1,14 @@
+<%- include("./partials/header.ejs") %>
+
+<h1>Become A member</h1>
+<h3>You only need to know the answer</h3>
+
+<form action="/auth/member" method="POST">
+    <div>
+        <label for="secretWord">What is the secret word?</label>
+        <input type="text" name="secretWord" id="secretWord" required>
+    </div>
+    <button type="submit">Become a Member</button>
+</form>
+
+<%- include("./partials/footer.ejs") %>

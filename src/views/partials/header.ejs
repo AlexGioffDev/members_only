@@ -10,9 +10,16 @@
         <h1>ExclusiveClub</h1>
 
         <% if (currentUser) { %>
+            <a href="/post/create">Create a new Post</a>
+            <% if (!currentUser.is_member) {%>
+                <a href="/auth/member">Become A member</a>
+            <% } %>
             <form action="/auth/logout" method="POST">
                 <button type="submit">Logout</button>
             </form>
+        <% } else { %>
+            <a href="/auth/login">Login</a>
+            <a href="/auth/signup">Sign Up</a>
         <% } %>
     </header>
 <main>
