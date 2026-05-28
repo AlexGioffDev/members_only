@@ -6,4 +6,13 @@
     <title><%= title %></title>
 </head>
 <body>
+    <header>
+        <h1>ExclusiveClub</h1>
+
+        <% if (currentUser) { %>
+            <form action="/auth/logout" method="POST">
+                <button type="submit">Logout</button>
+            </form>
+        <% } %>
+    </header>
 <main>

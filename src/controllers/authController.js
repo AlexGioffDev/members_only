@@ -43,3 +43,12 @@ export const postSignup = async (req, res) => {
 export const getLoginPage = (req, res) => {
     res.render('login', {title: "Login"})
 }
+
+export const logOutCall = (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err)
+        }
+        return res.redirect('/auth/login')
+    })
+}

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getLoginPage, getSignUpPage, postSignup } from "../controllers/authController.js";
+import { getLoginPage, getSignUpPage, logOutCall, postSignup } from "../controllers/authController.js";
 import passport from "passport";
 
 
@@ -14,7 +14,7 @@ authRouter.post('/login', passport.authenticate('local', {
     failureRedirect: '/auth/login',
     successRedirect: '/auth/login'
 }))
-// authRouter.post('/logout')
+authRouter.post('/logout', logOutCall)
 
 
 export default authRouter;
