@@ -1,39 +1,54 @@
 <%- include("./partials/header.ejs") %>
 
-    <p>HomePage</p>
-    <div>
-        <h2>Posts</h2>
-        <% posts.forEach((post)=> { %>
-            <div>
-                <h3>
-                    <%= post.title %>
-                </h3>
-                <p>
-                    <%= post.body %>
-                </p>
+    <% if (currentUser) { %>
+        <p class="greeting">Welcome back, <strong>
+                <%= currentUser.username %>
+            </strong></p>
+        <% } %>
 
-                <% if (currentUser && (currentUser.is_member || currentUser.admin)) {%>
-                    <div>
-                        <p>
-                            <%= post.username %>
-                        </p>
-                        <p>
-                            <%= post.created_at.toLocaleDateString("en-US", {year: 'numeric' , month: '2-digit' ,
-                                day: '2-digit' , hour: '2-digit' , minute: '2-digit' , hour12: false }) %>
-                        </p>
+            <div class="divider--ornate"><span>&#10022; dispatches &#10022;</span></div>
+
+            <div class="container-posts">
+                <% if (posts.length===0) { %>
+                    <div class="empty-state">
+                        <p>No posts yet. Be the first to speak.</p>
                     </div>
-                <% } %>
-                
-                <% if (currentUser && currentUser.admin) { %>
-                    <form action="/post/delete/<%= post.post_id %>?_method=DELETE" method="POST" onclick="return confirm('Do you want really delete this post?')">
-                        <button type="submit"> 
-                            Delete
-                        </button>
-                    </form>
-                <% } %>
+                    <% } %>
 
+                        <% posts.forEach((post)=> { %>
+                            <article class="post-card">
+                                <h3 class="post-card__title">
+                                    <%= post.title %>
+                                </h3>
+                                <p class="post-card__body">
+                                    <%= post.body %>
+                                </p>
+
+                                <% if (currentUser && (currentUser.is_member || currentUser.admin)) { %>
+                                    <div class="post-card__meta">
+                                        <span class="post-card__author">
+                                            <%= post.username %>
+                                        </span>
+                                        <span class="post-card__date">
+                                            <%= post.created_at.toLocaleDateString("en-US", { year: 'numeric' ,
+                                                month: '2-digit' , day: '2-digit' , hour: '2-digit' , minute: '2-digit'
+                                                , hour12: false }) %>
+                                        </span>
+                                        <span class="post-card__badge">Member</span>
+                                    </div>
+                                    <% } %>
+
+                                        <% if (currentUser && currentUser.admin) { %>
+                                            <div class="post-card__delete">
+                                                <form action="/post/delete/<%= post.post_id %>?_method=DELETE"
+                                                    method="POST"
+                                                    onsubmit="return confirm('Delete this post permanently?')">
+                                                    <button type="submit" class="btn-delete">Delete Post</button>
+                                                </form>
+                                            </div>
+                                            <% } %>
+                            </article>
+                            <% }) %>
             </div>
-            <% }) %>
-    </div>
 
-    <%- include("./partials/footer.ejs") %>
+            <%- include("./partials/footer.ejs") %>

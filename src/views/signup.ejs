@@ -1,29 +1,42 @@
-<%- include("./partials/header.ejs")  %>
+<%- include("./partials/header.ejs") %>
 
-<form action="/auth/signup" method="POST">
-    <div>
-        <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" id="firstName" required>
-    </div>
-    <div>
-        <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" id="lastName" required>
-    </div>
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-    </div>
-    <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword">
-    </div>
-    <button type="submit">Register User</button>
-</form>
+    <div class="form-card">
+        <h2 class="form-card__title">Register</h2>
+        <p class="form-card__subtitle">Signing up is free. Being a member is another matter.</p>
 
+        <form action="/auth/signup" method="POST">
+            <div class="field">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName" placeholder="First name…" required
+                    autocomplete="given-name">
+            </div>
+            <div class="field">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName" placeholder="Last name…" required
+                    autocomplete="family-name">
+            </div>
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Choose a name…" required
+                    autocomplete="username">
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="••••••••" required
+                    autocomplete="new-password">
+            </div>
+            <div class="field">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="••••••••"
+                    autocomplete="new-password">
+            </div>
+            <button type="submit" class="btn btn--primary">Create Account</button>
+        </form>
 
+        <div class="divider" style="margin-block: 1.5rem;"></div>
+        <p style="text-align:center; font-size:0.85rem; color:var(--text-muted); font-style:italic;">
+            Already have access? <a href="/auth/login">Login</a>
+        </p>
+    </div>
 
-<%- include("./partials/footer.ejs")  %>
+    <%- include("./partials/footer.ejs") %>

@@ -1,0 +1,143 @@
+/* ================================
+   CSS RESET 2026
+   Modern, minimal, accessible
+   ================================ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+/* Remove default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Core body defaults */
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove list styles only when semantic role is explicit */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+/* Headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+/* Readable line length for text elements */
+p,
+li,
+figcaption {
+    text-wrap: pretty;
+    max-width: 75ch;
+}
+
+/* Prevent long words from overflowing */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* Default link style */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/* Media elements */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Form elements inherit font */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* Textarea minimum height */
+textarea:not([rows]) {
+    min-height: 10em;
+}
+
+/* Interactive elements cursor */
+button,
+[role="button"],
+label[for] {
+    cursor: pointer;
+}
+
+/* Scroll margin for anchor targets */
+:target {
+    scroll-margin-block: 5ex;
+}
+
+/* Focus visible — never remove, only style */
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+/* Hidden attribute support */
+[hidden] {
+    display: none !important;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+a,
+a:visited
+{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}

@@ -1,22 +1,27 @@
-<%- include("./partials/header.ejs")  %>
+<%- include("./partials/header.ejs") %>
 
+    <div class="form-card">
+        <h2 class="form-card__title">Enter</h2>
+        <p class="form-card__subtitle">Those who know, know.</p>
 
-<% if (currentUser) { %>
-    <p>Hello <%= currentUser.username %></p>
-<% }%>
+        <form action="/auth/login" method="POST">
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Your name…" required
+                    autocomplete="username">
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="••••••••" required
+                    autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn btn--primary">Login</button>
+        </form>
 
-<form action="/auth/login" method="POST">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username">
+        <div class="divider" style="margin-block: 1.5rem;"></div>
+        <p style="text-align:center; font-size:0.85rem; color:var(--text-muted); font-style:italic;">
+            Not yet a member? <a href="/auth/signup">Request entry</a>
+        </p>
     </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
-    </div>
-    <button type="submit">Login</button>
-</form>
 
-
-
-<%- include("./partials/footer.ejs")  %>
+    <%- include("./partials/footer.ejs") %>

@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cormorant:ital@1&family=Pinyon+Script&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header>
-        <h1>ExclusiveClub</h1>
-
-        <% if (currentUser) { %>
-            <a href="/post/create">Create a new Post</a>
-            <% if (!currentUser.is_member) {%>
-                <a href="/auth/member">Become A member</a>
-            <% } %>
-            <form action="/auth/logout" method="POST">
-                <button type="submit">Logout</button>
-            </form>
-        <% } else { %>
-            <a href="/auth/login">Login</a>
-            <a href="/auth/signup">Sign Up</a>
-        <% } %>
+        <div class="container">
+            <a href="/" class="site-logo">ExclusiveClub</a>
+            <nav>
+                <ul>
+                    <% if (currentUser) { %>
+                        <li><a href="/post/create">New Post</a></li>
+                        <% if (!currentUser.is_member) { %>
+                            <li><a href="/auth/member">Become a Member</a></li>
+                            <% } %>
+                                <li>
+                                    <form action="/auth/logout" method="POST">
+                                        <button class="btn-nav-logout" type="submit">Logout</button>
+                                    </form>
+                                </li>
+                                <% } else { %>
+                                    <li><a href="/auth/login">Login</a></li>
+                                    <li><a href="/auth/signup">Sign Up</a></li>
+                                    <% } %>
+                </ul>
+            </nav>
+        </div>
     </header>
-<main>
+    <main>

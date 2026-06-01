@@ -1,14 +1,23 @@
 <%- include("./partials/header.ejs") %>
 
-<h1>Become A member</h1>
-<h3>You only need to know the answer</h3>
+    <div class="member-gate">
+        <div class="form-card">
+            <span class="member-gate__icon">⚜</span>
+            <h2 class="form-card__title">Ascend</h2>
+            <p class="form-card__subtitle">
+                Membership is not purchased.<br>
+                It is earned — by those who already know.
+            </p>
 
-<form action="/auth/member" method="POST">
-    <div>
-        <label for="secretWord">What is the secret word?</label>
-        <input type="text" name="secretWord" id="secretWord" required>
+            <form action="/auth/member" method="POST">
+                <div class="field">
+                    <label for="secretWord">The secret word</label>
+                    <input type="text" name="secretWord" id="secretWord" placeholder="Speak it…" required
+                        autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn--primary">Claim Membership</button>
+            </form>
+        </div>
     </div>
-    <button type="submit">Become a Member</button>
-</form>
 
-<%- include("./partials/footer.ejs") %>
+    <%- include("./partials/footer.ejs") %>

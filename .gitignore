@@ -39,11 +39,9 @@ ehthumbs.db
 *.sln
 *.sw?
 
-# Testing (se userai Jest o simili in futuro)
 coverage/
 .nyc_output/
 
-# Database / Prisma (Utile per quando passerai a Prisma)
 prisma/migrations/
 *.db
 *.db-journal
